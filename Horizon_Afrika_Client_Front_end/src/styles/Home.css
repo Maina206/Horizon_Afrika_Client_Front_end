@@ -70,7 +70,7 @@
   }
   
   section h2 span {
-    color: #FF5722;
+    color: #FF6700;
   }
   
   /* Destinations */
@@ -157,7 +157,7 @@
   }
   
   .book-now {
-    background: #FF5722;
+    background: #FF6700;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -171,7 +171,7 @@
    font-size: 1rem;
   }
   .book-now:hover {
-    background: #F4511E;
+    background:#FF6700;
   }
   
   /* Reviews */
