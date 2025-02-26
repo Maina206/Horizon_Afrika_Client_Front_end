@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <Home />
-  {/* //   <Router>
+      {/* //   <Router>
   //   <NavBar />
   //   <Routes>
   //     <Route path="/" element={<Home />} />
@@ -18,8 +18,7 @@ const App = () => {
   //   </Routes>
   // </Router> */}
     </div>
-
-  )
-  };
+  );
+};
 
 export default App;
