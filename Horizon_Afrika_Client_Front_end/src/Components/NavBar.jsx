@@ -1,41 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Menu, X } from "lucide-react";
 import "../styles/NavBar.css";
 
-const NavBar = () => {
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <nav className="navbar">
-      <div className="navbar-brand">
-        <Link to="/" className="logo">
-          HorizonAfrika
-        </Link>
+      <div className="nav-brand">
+        <h1>
+          Travel<span>Africa</span>
+        </h1>
       </div>
 
-      <div className="nav-links">
-        <Link to="/" className="nav-item">
-          Home
-        </Link>
-        <Link to="/destinations" className="nav-item">
-          Destinations
-        </Link>
-        <Link to="/safari-packages" className="nav-item">
-          Safari Packages
-        </Link>
-        <Link to="/about" className="nav-item">
-          About Us
-        </Link>
-      </div>
+      <button className="hamburger" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
 
-      <div className="nav-buttons">
-        <Link to="/contact" className="contact-btn">
-          Contact
-        </Link>
-        <button className="profile-btn">
-          <i className="fas fa-user-circle"></i>
-        </button>
+      <div className={`nav-links ${isOpen ? "active" : ""}`}>
+        <a href="/">Home</a>
+        <a href="/destinations">Destinations</a>
+        <a href="/safari-packages">Safari Packages</a>
+        <a href="/contact">Contact</a>
+        <button className="book-now">Book Now</button>
       </div>
     </nav>
   );
 };
 
-export default NavBar;
+export default Navbar;
