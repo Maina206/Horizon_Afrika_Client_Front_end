@@ -1,11 +1,13 @@
 import React from "react";
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from "./Components/NavBar";
+// import NavBar from "./Components/NavBar";
+import Home from "./Components/Home";
 
 const App = () => {
   return (
-    <NavBar/>
-  //   <Router>
+    <div>
+      <Home />
+  {/* //   <Router>
   //   <NavBar />
   //   <Routes>
   //     <Route path="/" element={<Home />} />
@@ -14,8 +16,10 @@ const App = () => {
   //     <Route path="/about" element={<About />} />
   //     <Route path="/contact" element={<Contact />} />
   //   </Routes>
-  // </Router>
-  );
-};
+  // </Router> */}
+    </div>
+
+  )
+  };
 
 export default App;
