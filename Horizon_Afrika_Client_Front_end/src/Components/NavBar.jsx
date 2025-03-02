@@ -1,19 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, User } from "lucide-react";
 import SignUpClient from "./SignUpClient";
 import LoginClient from "./LoginClient";
 import "../styles/NavBar.css";
 
 const Navbar = () => {
-  // State for the dropdown and modals
+  // State for the dropdown, modals, and user authentication
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Toggle functions
+  // Check authentication status from localStorage on component mount
+  useEffect(() => {
+    const userLoggedIn = localStorage.getItem("isAuthenticated") === "true";
+    setIsAuthenticated(userLoggedIn);
+  }, []);
+
+  // Handle successful sign-up or login
+  const handleAuthSuccess = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem("isAuthenticated", "true");
+    setIsSignUpModalOpen(false);
+    setIsSignInModalOpen(false);
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("isAuthenticated");
+  };
+
+  // Toggle dropdown
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
+  // Open and close modals
   const openSignUpModal = () => {
     setIsSignUpModalOpen(true);
     setDropdownOpen(false);
@@ -51,24 +73,42 @@ const Navbar = () => {
         <div className="right-links">
           <button className="contact-button">Contact</button>
           <div className="avatar" onClick={toggleDropdown}>
-            <User size={24} />
-            {dropdownOpen && (
-              <div className="dropdown-menu">
-                <button className="dropdown-item" onClick={openSignUpModal}>
-                  Sign Up
-                </button>
-                <button className="dropdown-item" onClick={openSignInModal}>
-                  Sign In
-                </button>
-              </div>
+            {isAuthenticated ? (
+              <button className="logout-button" onClick={handleLogout}>
+                Logout
+              </button>
+            ) : (
+              <>
+                <User size={24} />
+                {dropdownOpen && (
+                  <div className="dropdown-menu">
+                    <button className="dropdown-item" onClick={openSignUpModal}>
+                      Sign Up
+                    </button>
+                    <button className="dropdown-item" onClick={openSignInModal}>
+                      Sign In
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
       </div>
 
       {/* Render Modals */}
-      {isSignUpModalOpen && <SignUpClient closeModal={closeSignUpModal} />}
-      {isSignInModalOpen && <LoginClient closeModal={closeSignInModal} />}
+      {isSignUpModalOpen && (
+        <SignUpClient
+          closeModal={closeSignUpModal}
+          onAuthSuccess={handleAuthSuccess}
+        />
+      )}
+      {isSignInModalOpen && (
+        <LoginClient
+          closeModal={closeSignInModal}
+          onAuthSuccess={handleAuthSuccess}
+        />
+      )}
     </nav>
   );
 };

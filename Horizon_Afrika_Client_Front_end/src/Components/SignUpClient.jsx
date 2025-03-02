@@ -36,12 +36,12 @@ const SignUpClient = ({ closeModal }) => {
         first_name: formData.firstName,
         last_name: formData.lastName,
         email: formData.email,
-        phone: formData.phone,
+        phone_number: formData.phone,
         gender: formData.gender,
         password: formData.password,
       };
 
-      const response = await fetch("https://your-backend-url.com/api/signup", {
+      const response = await fetch(`http://localhost:5000/register/client`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +50,18 @@ const SignUpClient = ({ closeModal }) => {
       });
 
       if (response.ok) {
-        setSuccessMessage("Sign up successful!");
+        const data = await response.json();
+
+        // Store token in local storage
+        localStorage.setItem("token", data.token);
+
+        // Trigger Navbar update
+        window.dispatchEvent(new Event("authChange"));
+
+        // Close the modal
+        closeModal();
+
+        // Reset form data
         setFormData({
           firstName: "",
           lastName: "",
@@ -60,12 +71,15 @@ const SignUpClient = ({ closeModal }) => {
           password: "",
           confirmPassword: "",
         });
+
+        setSuccessMessage("Sign up successful!");
       } else {
-        throw new Error("Sign up failed. Please try again.");
+        const errorData = await response.json();
+        setError(errorData.error || "Sign up failed. Please try again.");
       }
     } catch (error) {
       console.error("Error:", error);
-      setError("Sign up failed. Please try again.");
+      setError("An error occurred. Please try again.");
     }
   };
 
@@ -85,6 +99,7 @@ const SignUpClient = ({ closeModal }) => {
             placeholder="First Name"
             value={formData.firstName}
             onChange={handleChange}
+            required
           />
           <input
             type="text"
@@ -92,6 +107,7 @@ const SignUpClient = ({ closeModal }) => {
             placeholder="Last Name"
             value={formData.lastName}
             onChange={handleChange}
+            required
           />
           <input
             type="email"
@@ -99,6 +115,7 @@ const SignUpClient = ({ closeModal }) => {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
+            required
           />
           <input
             type="text"
@@ -106,6 +123,7 @@ const SignUpClient = ({ closeModal }) => {
             placeholder="Phone Number"
             value={formData.phone}
             onChange={handleChange}
+            required
           />
           <div className="gender-options">
             <label>
@@ -115,6 +133,7 @@ const SignUpClient = ({ closeModal }) => {
                 value="male"
                 checked={formData.gender === "male"}
                 onChange={handleChange}
+                required
               />
               Male
             </label>
@@ -125,6 +144,7 @@ const SignUpClient = ({ closeModal }) => {
                 value="female"
                 checked={formData.gender === "female"}
                 onChange={handleChange}
+                required
               />
               Female
             </label>
@@ -135,6 +155,7 @@ const SignUpClient = ({ closeModal }) => {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
+            required
           />
           <input
             type="password"
@@ -142,6 +163,7 @@ const SignUpClient = ({ closeModal }) => {
             placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
+            required
           />
           <button className="submit-button" type="submit">
             Sign Up
