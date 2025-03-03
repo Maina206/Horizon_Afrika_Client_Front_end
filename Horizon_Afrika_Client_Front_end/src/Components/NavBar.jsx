@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import "../styles/NavBar.css";
 
@@ -19,8 +19,8 @@ const Navbar = () => {
 
       <div className={`nav-links ${isOpen ? "active" : ""}`}>
         <a href="/">Home</a>
-        <a href="/destinations">Destinations</a>
-        <a href="/safari-packages">Safari Packages</a>
+        <a href="/DestinationPage">Destinations</a>
+        <a href="/PackagePage.jsx">Safari Packages</a>
         <a href="/contact">Contact</a>
         <button className="book-now">Book Now</button>
       </div>

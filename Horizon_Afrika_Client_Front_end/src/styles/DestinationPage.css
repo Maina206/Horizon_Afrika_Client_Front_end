@@ -1,0 +1,69 @@
+/* DestinationPage.css */
+.container {
+    padding: 2rem; /* Equivalent to p-8 */
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-md */
+    overflow: hidden;
+  }
+  
+  .card img {
+    width: 100%; /* Equivalent to w-full */
+    height: 12rem; /* Equivalent to h-48 */
+    object-fit: cover; /* Equivalent to object-cover */
+  }
+  
+  .card-content {
+    padding: 1rem; /* Equivalent to p-4 */
+  }
+  
+  .card-title {
+    font-size: 1.125rem; /* Equivalent to text-lg */
+    font-weight: 600; /* Equivalent to font-semibold */
+    margin-bottom: 0.5rem; /* Equivalent to mb-2 */
+  }
+  
+  .button {
+    background-color: #F97316; /* Equivalent to bg-orange-500 */
+    color: white; /* Equivalent to text-white */
+    padding: 0.5rem 1rem; /* Equivalent to px-4 py-2 */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    transition: background-color 0.2s; /* Equivalent to transition-colors */
+  }
+  
+  .button:hover {
+    background-color: #EA580C; /* Equivalent to hover:bg-orange-600 */
+  }
+  
+  .stats-container {
+    display: flex; /* Equivalent to flex */
+    justify-content: space-between; /* Equivalent to justify-between */
+  }
+  
+  .stats {
+    font-size: 1.25rem; /* Equivalent to text-xl */
+    font-weight: bold; /* Equivalent to font-bold */
+  }
+  
+  .stats-label {
+    font-size: 0.875rem; /* Equivalent to text-sm */
+  }
+  
+  .section-title {
+    font-size: 1.5rem; /* Equivalent to text-2xl */
+    font-weight: bold; /* Equivalent to font-bold */
+    margin-top: 1.5rem; /* Equivalent to mt-6 */
+  }
+  
+  .section-description {
+    margin-bottom: 1.5rem; /* Equivalent to mb-6 */
+  }
+  
+  .grid {
+    display: grid; /* Equivalent to grid */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 1rem; /* Equivalent to gap-4 */
+  }

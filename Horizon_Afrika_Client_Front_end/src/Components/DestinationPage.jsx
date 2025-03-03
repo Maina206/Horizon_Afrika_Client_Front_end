@@ -1,21 +1,20 @@
-import React from "react";
+import "react";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import '../styles/DestinationPage.css';
 
-function PackageCard({ image, title }) {
+const PackageCard = ({ image, title }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <img src={image} alt={title} className="w-full h-48 object-cover" />
-      <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2">{title}</h3>
-        <div className="flex items-center justify-between">
-          <button className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
-            View Package
-          </button>
-        </div>
+    <div className="destination-card">
+      <img src={image} alt={title} className="destination-image" />
+      <div className="destination-content">
+        <h3 className="destination-title">{title}</h3>
+        <button className="view-button">View Package</button>
       </div>
     </div>
   );
-}
+};
 
 const DestinationPage = () => {
   const sliderSettings = {
@@ -24,11 +23,13 @@ const DestinationPage = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   const slides = [
     {
-      image: "/path/to/mombasa.jpg",
+      image: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=1200",
       stats: [
         { value: "300+", label: "Products" },
         { value: "24/7", label: "Support" },
@@ -36,7 +37,7 @@ const DestinationPage = () => {
       ],
     },
     {
-      image: "/path/to/nairobi.jpg",
+      image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=1200",
       stats: [
         { value: "200+", label: "Products" },
         { value: "24/7", label: "Support" },
@@ -44,49 +45,68 @@ const DestinationPage = () => {
       ],
     },
     {
-      image: "/path/to/maasai_mara.jpg",
+      image: "https://images.unsplash.com/photo-1543331979-5792e8cf6e2f?auto=format&fit=crop&q=80&w=1200",
       stats: [
         { value: "10000", label: "Bookings" },
-        { value: "-30%", label: "Price Guarantee:" },
+        { value: "-30%", label: "Price Guarantee" },
         { value: "98%", label: "Quality" },
       ],
     },
   ];
 
+  const destinations = [
+    {
+      image: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=800",
+      title: "Mombasa"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
+      title: "Nairobi"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1543331979-5792e8cf6e2f?auto=format&fit=crop&q=80&w=800",
+      title: "Maasai Mara"
+    }
+  ];
+
   return (
-    <div className="p-8">
-      <Slider {...sliderSettings}>
-        {slides.map((slide, index) => (
-          <div key={index} className="relative">
-            <img
-              src={slide.image}
-              alt={`Slide ${index}`}
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute bottom-0 left-0 p-4 bg-black bg-opacity-50 text-white">
-              <div className="flex space-x-4">
-                {slide.stats.map((stat, statIndex) => (
-                  <div key={statIndex}>
-                    <p className="text-xl font-bold">{stat.value}</p>
-                    <p className="text-sm">{stat.label}</p>
-                  </div>
-                ))}
+    <div className="destination-container">
+      <div className="slider-container">
+        <Slider {...sliderSettings}>
+          {slides.map((slide, index) => (
+            <div key={index} className="slider-slide">
+              <img src={slide.image} alt={`Slide ${index + 1}`} className="slider-image" />
+              <div className="stats-overlay">
+                <div className="stats-wrapper">
+                  {slide.stats.map((stat, statIndex) => (
+                    <div key={statIndex} className="stat-item">
+                      <p className="stat-value">{stat.value}</p>
+                      <p className="stat-label">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Slider>
-      <h2 className="text-2xl font-bold mt-6">
-        Explore Different Destinations
-      </h2>
-      <p className="mb-6">
-        Discover the beauty and adventure that Kenya has to offer. From stunning
-        landscapes to vibrant cultures, there's something for everyone.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <PackageCard image="/path/to/mombasa.jpg" title="Mombasa" />
-        <PackageCard image="/path/to/nairobi.jpg" title="Nairobi" />
-        <PackageCard image="/path/to/maasai_mara.jpg" title="Maasai Mara" />
+          ))}
+        </Slider>
+      </div>
+
+      <div className="content-section">
+        <h2 className="section-title">Explore Different Destinations</h2>
+        <p className="section-description">
+          Discover the beauty and adventure that Kenya has to offer. From stunning
+          landscapes to vibrant cultures, there is something for everyone.
+        </p>
+        
+        <div className="destinations-grid">
+          {destinations.map((destination, index) => (
+            <PackageCard 
+              key={index}
+              image={destination.image}
+              title={destination.title}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
