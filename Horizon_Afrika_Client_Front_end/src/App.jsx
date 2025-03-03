@@ -2,9 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
-import DestinationPage from "./Components/DestinationPage";
-import SafariPackages from "./Components/PackagePage";
-import Contact from "./Components/ContactPage";
+import Footer from "./Components/Footer";
 
 const App = () => {
   return (
@@ -19,6 +17,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 };

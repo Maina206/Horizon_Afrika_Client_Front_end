@@ -1,50 +1,92 @@
+/* NavBar.css */
+@import url("https://fonts.googleapis.com/css2?family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 70px;
+  background-color: #fff;
+  border-bottom: 4px solid #ffa500;
+  z-index: 1000;
 }
 
-.nav-brand h1 {
-  font-size: 1.5rem;
-  color: #333;
+.logo {
+  font-family: "Protest Revolution", serif;
+  color: #ff4500;
+  font-size: 24px;
 }
 
-.nav-brand span {
-  color: #ff6b00;
+.logo span {
+  font-family: "Protest Revolution", serif;
+  color: #ff4500;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.center-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-grow: 1;
+  font-weight: 700;
+}
+
+.right-links {
+  display: flex;
+  gap: 15px;
   align-items: center;
 }
 
 .nav-links a {
+  color: #ff4500;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 16px;
 }
 
-.nav-links a:hover {
-  color: #ff6b00;
-}
-
-.book-now {
-  background-color: #ff6b00;
+.contact-button {
+  background-color: #ff4500;
   color: white;
-  padding: 0.5rem 1rem;
   border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
 }
 
-.book-now:hover {
-  background-color: #e65a00;
+.avatar {
+  position: relative;
+  cursor: pointer;
+  color: #ff4500;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #ff4500;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
 }
 
 .hamburger {
@@ -52,27 +94,46 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #333;
 }
 
 @media (max-width: 768px) {
-  .hamburger {
-    display: block;
+  .logo {
+    margin-right: 250px;
   }
-
+  .navbar {
+    padding: 10px 30px;
+  }
   .nav-links {
     display: none;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
     flex-direction: column;
-    background-color: white;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
   }
-
   .nav-links.active {
     display: flex;
+    z-index: 9998;
+    transition: transform 0.3s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+    background-color: #d9d9d9;
+  }
+
+  .center-links {
+    display: flex;
+    flex-direction: column;
+  }
+  .right-links {
+    /* align-items: center; */
+    flex-direction: column;
+  }
+
+  .hamburger {
+    display: block;
   }
 }
