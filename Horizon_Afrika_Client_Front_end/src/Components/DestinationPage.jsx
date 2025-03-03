@@ -6,11 +6,11 @@ import '../styles/DestinationPage.css';
 
 const PackageCard = ({ image, title }) => {
   return (
-    <div className="destination-card">
-      <img src={image} alt={title} className="destination-image" />
-      <div className="destination-content">
-        <h3 className="destination-title">{title}</h3>
-        <button className="view-button">View Package</button>
+    <div class="card">
+      <img src={image} alt={title} class="card-image" />
+      <div class="card-content">
+        <h3 class="card-title">{title}</h3>
+        <button class="card-button">View Package</button>
       </div>
     </div>
   );
@@ -70,18 +70,18 @@ const DestinationPage = () => {
   ];
 
   return (
-    <div className="destination-container">
-      <div className="slider-container">
+    <div class="main-container">
+      <div class="slider-container">
         <Slider {...sliderSettings}>
           {slides.map((slide, index) => (
-            <div key={index} className="slider-slide">
-              <img src={slide.image} alt={`Slide ${index + 1}`} className="slider-image" />
-              <div className="stats-overlay">
-                <div className="stats-wrapper">
+            <div key={index} class="slide">
+              <img src={slide.image} alt={`Slide ${index + 1}`} class="slide-image" />
+              <div class="stats-overlay">
+                <div class="stats-wrapper">
                   {slide.stats.map((stat, statIndex) => (
-                    <div key={statIndex} className="stat-item">
-                      <p className="stat-value">{stat.value}</p>
-                      <p className="stat-label">{stat.label}</p>
+                    <div key={statIndex} class="stat">
+                      <p class="stat-value">{stat.value}</p>
+                      <p class="stat-label">{stat.label}</p>
                     </div>
                   ))}
                 </div>
@@ -91,14 +91,14 @@ const DestinationPage = () => {
         </Slider>
       </div>
 
-      <div className="content-section">
-        <h2 className="section-title">Explore Different Destinations</h2>
-        <p className="section-description">
+      <div class="content-section">
+        <h2 class="section-title">Explore Different Destinations</h2>
+        <p class="section-description">
           Discover the beauty and adventure that Kenya has to offer. From stunning
           landscapes to vibrant cultures, there is something for everyone.
         </p>
         
-        <div className="destinations-grid">
+        <div class="destinations-grid">
           {destinations.map((destination, index) => (
             <PackageCard 
               key={index}
