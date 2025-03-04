@@ -1,0 +1,103 @@
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.mpesa-logo {
+  width: 800px;
+}
+
+.payment-content {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.highlight {
+  color: orange;
+}
+
+.payment-box {
+  background: #ff6700;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.payment-box .input-icon {
+  margin-right: 10px;
+  color: gray;
+}
+
+.payment-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+}
+
+.customer-message {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+ol {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.payment-button {
+  display: flex;
+  justify-content: center;
+}
+
+.pay-button {
+  background: white;
+  color: orange;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.pay-button span {
+  color: blue;
+}
+
+@media (max-width: 768px) {
+  .payment-box {
+    padding: 15px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .pay-button {
+    font-size: 16px;
+  }
+}
