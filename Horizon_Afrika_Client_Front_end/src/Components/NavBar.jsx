@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, User } from "lucide-react";
+import { Link } from "react-router-dom";
 import SignUpClient from "./SignUpClient";
 import LoginClient from "./LoginClient";
 import "../styles/NavBar.css";
@@ -18,6 +19,20 @@ const Navbar = () => {
     setIsAuthenticated(userLoggedIn);
   }, []);
 
+  // Listen for authentication changes
+  useEffect(() => {
+    const handleAuthChange = () => {
+      const userLoggedIn = localStorage.getItem("isAuthenticated") === "true";
+      setIsAuthenticated(userLoggedIn);
+    };
+
+    window.addEventListener("authChange", handleAuthChange);
+
+    return () => {
+      window.removeEventListener("authChange", handleAuthChange);
+    };
+  }, []);
+
   // Handle successful sign-up or login
   const handleAuthSuccess = () => {
     setIsAuthenticated(true);
@@ -30,6 +45,8 @@ const Navbar = () => {
   const handleLogout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("token");
+    window.dispatchEvent(new Event("authChange"));
   };
 
   // Toggle dropdown
@@ -65,13 +82,16 @@ const Navbar = () => {
 
       <div className={`nav-links ${isOpen ? "active" : ""}`}>
         <div className="center-links">
-          <a href="/">Home</a>
-          <a href="/destinations">Destinations</a>
-          <a href="/safari-packages">Safari Packages</a>
-          <a href="/about">About Us</a>
+          {/* Replace <a> tags with <Link> */}
+          <Link to="/">Home</Link>
+          <Link to="/destinations">Destinations</Link>
+          <Link to="/safari-packages">Safari Packages</Link>
+          <Link to="/about">About Us</Link>
         </div>
         <div className="right-links">
-          <button className="contact-button">Contact</button>
+          <Link to="/contact" className="contact-button">
+            Contact
+          </Link>
           <div className="avatar" onClick={toggleDropdown}>
             {isAuthenticated ? (
               <button className="logout-button" onClick={handleLogout}>

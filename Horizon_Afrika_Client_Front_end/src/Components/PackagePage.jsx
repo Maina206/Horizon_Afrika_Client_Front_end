@@ -1,121 +1,10 @@
-import "react";
+import { useState, useEffect } from "react";
+import SafariModal from "./SafariModal";
 import { MapPin, Calendar } from "lucide-react";
-import '../styles/PackagePage.css'; // Correct relative path
-const packages = [
-  {
-    id: 1,
-    title: "10 DAYS CAMPING IN KENYA BUDGET",
-    location: "Mombasa",
-    duration: "10 Days",
-    price: "45,999",
-    image: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
+import "../styles/PackagePage.css";
+import SearchBar from "./SearchBar";
 
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
-
-
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
-
-
-
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
-
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
-
-
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
-
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
-
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
-
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
-
-  {
-    id: 2,
-    title: "COASTAL BEACH HOLIDAY",
-    location: "Diani",
-    duration: "7 Days",
-    price: "65,999",
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-  },
-
-
-  {
-    id: 3,
-    title: "MALINDI WATAMU GETAWAY",
-    location: "Malindi",
-    duration: "5 Days",
-    price: "55,999",
-    image: "https://images.unsplash.com/photo-1543331979-5792e8cf6e2f?auto=format&fit=crop&q=80&w=800",
-  },
-];
-
-function PackageCard({ image, title, location, duration, price }) {
+function PackageCard({ image, title, location, duration, price, onView }) {
   return (
     <div className="card">
       <img src={image} alt={title} />
@@ -133,10 +22,19 @@ function PackageCard({ image, title, location, duration, price }) {
         </div>
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-gray-500">From</p>
+            <p className="text-sm text-gray-500">From: </p>
             <p className="text-xl font-bold text-orange-500">KSH {price}</p>
           </div>
-          <button className="button">View Package</button>
+          <button
+            type="button"
+            className="button"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent event propagation
+              onView();
+            }}
+          >
+            View Package
+          </button>
         </div>
       </div>
     </div>
@@ -144,15 +42,29 @@ function PackageCard({ image, title, location, duration, price }) {
 }
 
 function PackagePage() {
+  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [packages, setPackages] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/packages/client")
+      .then((response) => response.json())
+      .then((data) => setPackages(data))
+      .catch((error) => console.error("Error fetching packages:", error));
+  }, []);
+
   return (
     <div className="container">
+      <SearchBar />
       <div className="max-width">
         <div className="flex">
           {/* Sidebar */}
           <div className="sidebar">
             <div className="bg-white rounded shadow-sm">
               <div className="p-4">
-                <h2 className="section-title">Available packages</h2>
+                <h2 className="section-title bg-gray-800">
+                  Available packages
+                </h2>
+
                 {/* Beach Packages */}
                 <div className="mt-4">
                   <h3 className="font-medium bg-gray-200">Beach Packages</h3>
@@ -188,7 +100,9 @@ function PackagePage() {
 
                 {/* Price Filter */}
                 <div className="mt-6">
-                  <h3 className="font-medium bg-gray-800 text-white">Filter By:</h3>
+                  <h3 className="font-medium bg-gray-800 text-white">
+                    Filter By:
+                  </h3>
                   <div className="mt-4">
                     <h4 className="font-medium">Price :</h4>
                     <div>
@@ -245,16 +159,28 @@ function PackagePage() {
                 <PackageCard
                   key={pkg.id}
                   image={pkg.image}
-                  title={pkg.title}
+                  title={pkg.package_name}
                   location={pkg.location}
                   duration={pkg.duration}
                   price={pkg.price}
+                  onView={() => {
+                    console.log("Selected Package:", pkg); // debugging if we are getting data back
+                    setSelectedPackage(pkg);
+                  }}
                 />
               ))}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedPackage && (
+        <SafariModal
+          packageData={selectedPackage}
+          onClose={() => setSelectedPackage(null)}
+        />
+      )}
     </div>
   );
 }

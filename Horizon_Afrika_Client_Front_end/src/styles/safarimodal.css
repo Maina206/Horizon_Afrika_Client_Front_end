@@ -1,0 +1,128 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Container */
+.modal-container {
+  background: white;
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: left;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Title */
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Price */
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d9534f;
+  margin-bottom: 20px;
+}
+
+/* Gallery */
+.gallery {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+.gallery-img {
+  width: 100px;
+  height: 75px;
+  border-radius: 5px;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+/* About The Tour */
+.about-tour {
+  margin-bottom: 20px;
+}
+.about-tour p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+.about-tour ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.about-tour li {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Exclusions */
+.exclusions {
+  margin-bottom: 20px;
+}
+.exclusions ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.exclusions li {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Book Now Button */
+.book-now {
+  background: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+.book-now:hover {
+  background: darkorange;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .gallery {
+    flex-wrap: wrap;
+  }
+  .gallery-img {
+    width: 80px;
+    height: 60px;
+  }
+}
