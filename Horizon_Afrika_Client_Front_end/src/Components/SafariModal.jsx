@@ -37,7 +37,7 @@ export default function SafariModal({ packageData, onClose }) {
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
-        <h2>{safariData.package_name}</h2>
+        <h2 className="safarimodal-h2">{safariData.package_name}</h2>
         <div className="price">
           <span>Price: Ksh{safariData.price}</span>
         </div>
@@ -73,7 +73,7 @@ export default function SafariModal({ packageData, onClose }) {
           </ul>
         </div>
 
-        <button className="book-now">Book Now</button>
+        <button className="book-now-button">Book Now</button>
       </div>
     </div>
   );
