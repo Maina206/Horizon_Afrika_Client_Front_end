@@ -87,7 +87,6 @@ const Navbar = () => {
           <Link to="/destinations">Destinations</Link>
           <Link to="/safari-packages">Safari Packages</Link>
           <Link to="/about">About Us</Link>
-          <Link to="/payment">Test Payment</Link>
         </div>
         <div className="right-links">
           <Link to="/contact" className="contact-button">

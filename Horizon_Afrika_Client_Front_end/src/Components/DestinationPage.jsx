@@ -2,7 +2,7 @@ import "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import '../styles/DestinationPage.css';
+import "../styles/DestinationPage.css";
 
 const PackageCard = ({ image, title }) => {
   return (
@@ -29,7 +29,8 @@ const DestinationPage = () => {
 
   const slides = [
     {
-      image: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=1200",
+      image:
+        "https://images.unsplash.com/photo-1519659528534-7fd733a832a0?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       stats: [
         { value: "300+", label: "Products" },
         { value: "24/7", label: "Support" },
@@ -37,7 +38,8 @@ const DestinationPage = () => {
       ],
     },
     {
-      image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=1200",
+      image:
+        "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=1200",
       stats: [
         { value: "200+", label: "Products" },
         { value: "24/7", label: "Support" },
@@ -45,7 +47,8 @@ const DestinationPage = () => {
       ],
     },
     {
-      image: "https://images.unsplash.com/photo-1543331979-5792e8cf6e2f?auto=format&fit=crop&q=80&w=1200",
+      image:
+        "https://images.unsplash.com/photo-1543331979-5792e8cf6e2f?auto=format&fit=crop&q=80&w=1200",
       stats: [
         { value: "10000", label: "Bookings" },
         { value: "-30%", label: "Price Guarantee" },
@@ -56,17 +59,20 @@ const DestinationPage = () => {
 
   const destinations = [
     {
-      image: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=800",
-      title: "Mombasa"
+      image:
+        "https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=800",
+      title: "Mombasa",
     },
     {
-      image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
-      title: "Nairobi"
+      image:
+        "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
+      title: "Nairobi",
     },
     {
-      image: "https://images.unsplash.com/photo-1543331979-5792e8cf6e2f?auto=format&fit=crop&q=80&w=800",
-      title: "Maasai Mara"
-    }
+      image:
+        "https://images.unsplash.com/photo-1543331979-5792e8cf6e2f?auto=format&fit=crop&q=80&w=800",
+      title: "Maasai Mara",
+    },
   ];
 
   return (
@@ -75,7 +81,11 @@ const DestinationPage = () => {
         <Slider {...sliderSettings}>
           {slides.map((slide, index) => (
             <div key={index} class="slide">
-              <img src={slide.image} alt={`Slide ${index + 1}`} class="slide-image" />
+              <img
+                src={slide.image}
+                alt={`Slide ${index + 1}`}
+                class="slide-image"
+              />
               <div class="stats-overlay">
                 <div class="stats-wrapper">
                   {slide.stats.map((stat, statIndex) => (
@@ -94,13 +104,14 @@ const DestinationPage = () => {
       <div class="content-section">
         <h2 class="section-title">Explore Different Destinations</h2>
         <p class="section-description">
-          Discover the beauty and adventure that Kenya has to offer. From stunning
-          landscapes to vibrant cultures, there is something for everyone.
+          Discover the beauty and adventure that Kenya has to offer. From
+          stunning landscapes to vibrant cultures, there is something for
+          everyone.
         </p>
-        
+
         <div class="destinations-grid">
           {destinations.map((destination, index) => (
-            <PackageCard 
+            <PackageCard
               key={index}
               image={destination.image}
               title={destination.title}

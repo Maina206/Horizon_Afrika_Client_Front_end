@@ -1,13 +1,95 @@
-import "../styles/paymentpage.css";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { FaPhone } from "react-icons/fa";
+import LoginClient from "./LoginClient"; // Import login modal
+import "../styles/paymentpage.css";
 
 const MpesaPayment = () => {
+  const location = useLocation();
+  const price = location.state?.price ?? 0;
+  const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isPaid, setIsPaid] = useState(false); // ✅ Track payment status
+  const [showLogin, setShowLogin] = useState(false); // State for login modal
+  const navigate = useNavigate();
+
+  const handlePayment = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setShowLogin(true); // Show login modal if user is not authenticated
+      return;
+    }
+
+    if (!phone) {
+      setMessage("Please enter a valid phone number.");
+      return;
+    }
+
+    const package_id = location.state?.package_id; // Ensure package_id is provided
+
+    if (!package_id) {
+      setMessage("Package ID is missing. Please select a package first.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      console.log("Token:", token);
+      console.log(
+        "Sending request to:",
+        `${import.meta.env.VITE_BACKEND_URL}/packages/initiate-payment`
+      );
+      console.log("Payload:", {
+        phone_number: phone,
+        package_id,
+        amount: price,
+      });
+
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/packages/initiate-payment`,
+        { phone_number: phone, package_id, amount: price }, // ✅ Include package_id
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log("Response:", response.data);
+      setMessage(response.data.ResponseDescription || "Payment successful!");
+      setIsPaid(true); // ✅ Mark as paid
+    } catch (error) {
+      if (error.response) {
+        console.error("Error response:", error.response.data);
+        setMessage(error.response.data.message || "Payment Failed");
+      } else {
+        console.error("Network error:", error);
+        setMessage("Network error. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="payment-container">
+      {showLogin && (
+        <LoginClient
+          closeModal={() => setShowLogin(false)}
+          onAuthSuccess={() => setShowLogin(false)} // Close modal after login
+        />
+      )}
+
+      <div className="Mpesa-logo"></div>
       <div className="payment-content">
         <h2>
           Payment <span className="highlight">Method</span>
         </h2>
+        <hr className="hrline-mpesa" />
         <h3>M-PESA</h3>
         <div className="payment-box">
           <label htmlFor="phone-number">Enter Phone Number</label>
@@ -17,33 +99,27 @@ const MpesaPayment = () => {
               type="text"
               id="phone-number"
               placeholder="e.g. 254712345678"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              disabled={isPaid} // Disable input if already paid
             />
           </div>
           <p className="customer-message">
             <strong>Dear Customer,</strong>
             <br />
-            Shortly you'll receive an M-PESA prompt on your phone to enter your
-            M-PESA pin to complete payment. Thank You.
+            You'll receive an M-PESA prompt shortly to complete your payment.
           </p>
-          <p>You can also go to M-PESA and follow the following steps:</p>
-          <ol>
-            <li>Go to the M-PESA menu.</li>
-            <li>Select Lipa na Mpesa.</li>
-            <li>Select the Paybill option.</li>
-            <li>Enter business number 247247.</li>
-            <li>Enter the account number 0717403603.</li>
-            <li>Enter the amount.</li>
-            <li>Enter PIN and Press OK.</li>
-            <li>
-              You'll receive a confirmation message with your payment reference
-              number.
-            </li>
-          </ol>
-          <div className="payment-button">
-            <button className="pay-button">
-              Pay <span>via</span> Mobile
-            </button>
-          </div>
+          <p>
+            <strong>Amount: Ksh {price}</strong>
+          </p>
+          <button onClick={handlePayment} disabled={loading || isPaid}>
+            {isPaid
+              ? "Processed "
+              : loading
+              ? "Processing..."
+              : "Pay with M-Pesa"}
+          </button>
+          {message && <p>{message}</p>}
         </div>
       </div>
     </div>
