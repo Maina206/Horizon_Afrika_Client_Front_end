@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaPhone } from "react-icons/fa";
-import LoginClient from "./LoginClient"; // Import login modal
+import LoginClient from "./LoginClient";
 import "../styles/paymentpage.css";
 
 const MpesaPayment = () => {
@@ -11,7 +11,7 @@ const MpesaPayment = () => {
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [isPaid, setIsPaid] = useState(false); // ✅ Track payment status
+  const [isPaid, setIsPaid] = useState(false); // Track payment status
   const [showLogin, setShowLogin] = useState(false); // State for login modal
   const navigate = useNavigate();
 
@@ -50,7 +50,7 @@ const MpesaPayment = () => {
 
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/packages/initiate-payment`,
-        { phone_number: phone, package_id, amount: price }, // ✅ Include package_id
+        { phone_number: phone, package_id, amount: price },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ const MpesaPayment = () => {
 
       console.log("Response:", response.data);
       setMessage(response.data.ResponseDescription || "Payment successful!");
-      setIsPaid(true); // ✅ Mark as paid
+      setIsPaid(true);
     } catch (error) {
       if (error.response) {
         console.error("Error response:", error.response.data);
@@ -80,7 +80,7 @@ const MpesaPayment = () => {
       {showLogin && (
         <LoginClient
           closeModal={() => setShowLogin(false)}
-          onAuthSuccess={() => setShowLogin(false)} // Close modal after login
+          onAuthSuccess={() => setShowLogin(false)}
         />
       )}
 
@@ -101,7 +101,7 @@ const MpesaPayment = () => {
               placeholder="e.g. 254712345678"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              disabled={isPaid} // Disable input if already paid
+              disabled={isPaid}
             />
           </div>
           <p className="customer-message">
