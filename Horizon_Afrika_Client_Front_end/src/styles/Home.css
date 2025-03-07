@@ -255,7 +255,7 @@ section h2 span {
   color: white;
   border: none;
   padding: 15px 30px;
-  border-radius: 25px;
+  border-radius: 15px;
   cursor: pointer;
   transition: background 0.3s ease;
   font-size: 1.5rem;
