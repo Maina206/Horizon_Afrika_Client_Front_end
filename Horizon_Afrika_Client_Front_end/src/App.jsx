@@ -6,6 +6,7 @@ import Footer from "./Components/Footer";
 import DestinationPage from "./Components/DestinationPage";
 import SafariPackages from "./Components/PackagePage";
 import Contact from "./Components/ContactPage";
+import AboutUs from "./Components/AboutUs";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/destinations" element={<DestinationPage />} />
           <Route path="/safari-packages" element={<SafariPackages />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
       </Router>
       <Footer />

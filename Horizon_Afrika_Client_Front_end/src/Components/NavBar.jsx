@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, User } from "lucide-react";
+import { Link } from "react-router-dom";
 import SignUpClient from "./SignUpClient";
 import LoginClient from "./LoginClient";
 import "../styles/NavBar.css";
@@ -65,10 +66,10 @@ const Navbar = () => {
 
       <div className={`nav-links ${isOpen ? "active" : ""}`}>
         <div className="center-links">
-          <a href="/">Home</a>
-          <a href="/destinations">Destinations</a>
-          <a href="/safari-packages">Safari Packages</a>
-          <a href="/about">About Us</a>
+          <Link to="/">Home</Link>
+          <Link to="/destinations">Destinations</Link>
+          <Link to="/safari-packages">Safari Packages</Link>
+          <Link to="/about">About Us</Link>
         </div>
         <div className="right-links">
           <button className="contact-button">Contact</button>
