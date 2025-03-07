@@ -8,7 +8,7 @@ function PackageCard({ image, title, location, duration, price, onView }) {
   return (
     <div className="card">
       <img src={image} alt={title} />
-      <div className="card-content">
+      <div className="safari-card-content">
         <h3 className="card-title">{title}</h3>
         <div className="stats-container">
           <div className="flex items-center gap-2 text-gray-600">
@@ -76,7 +76,7 @@ function PackagePage() {
   };
 
   return (
-    <div className="container">
+    <div className="package-container">
       <SearchBar />
       <div className="max-width">
         <div className="flex">
