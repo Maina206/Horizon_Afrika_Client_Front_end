@@ -19,6 +19,20 @@ const Navbar = () => {
     setIsAuthenticated(userLoggedIn);
   }, []);
 
+  // Listen for authentication changes
+  useEffect(() => {
+    const handleAuthChange = () => {
+      const userLoggedIn = localStorage.getItem("isAuthenticated") === "true";
+      setIsAuthenticated(userLoggedIn);
+    };
+
+    window.addEventListener("authChange", handleAuthChange);
+
+    return () => {
+      window.removeEventListener("authChange", handleAuthChange);
+    };
+  }, []);
+
   // Handle successful sign-up or login
   const handleAuthSuccess = () => {
     setIsAuthenticated(true);
@@ -31,6 +45,8 @@ const Navbar = () => {
   const handleLogout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("token");
+    window.dispatchEvent(new Event("authChange"));
   };
 
   // Toggle dropdown
@@ -66,13 +82,19 @@ const Navbar = () => {
 
       <div className={`nav-links ${isOpen ? "active" : ""}`}>
         <div className="center-links">
+<<<<<<< HEAD
+=======
+          {/* Replace <a> tags with <Link> in future for our routes */}
+>>>>>>> main
           <Link to="/">Home</Link>
           <Link to="/destinations">Destinations</Link>
           <Link to="/safari-packages">Safari Packages</Link>
           <Link to="/about">About Us</Link>
         </div>
         <div className="right-links">
-          <button className="contact-button">Contact</button>
+          <Link to="/contact" className="contact-button">
+            Contact
+          </Link>
           <div className="avatar" onClick={toggleDropdown}>
             {isAuthenticated ? (
               <button className="logout-button" onClick={handleLogout}>

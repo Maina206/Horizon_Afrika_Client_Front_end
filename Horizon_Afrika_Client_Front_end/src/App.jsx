@@ -7,6 +7,7 @@ import DestinationPage from "./Components/DestinationPage";
 import SafariPackages from "./Components/PackagePage";
 import Contact from "./Components/ContactPage";
 import AboutUs from "./Components/AboutUs";
+import PaymentPage from "./Components/PaymentPage";
 
 const App = () => {
   return (
@@ -19,6 +20,9 @@ const App = () => {
           <Route path="/safari-packages" element={<SafariPackages />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<AboutUs />} />
+
+          {/* Testing payment page */}
+          <Route path="/payment" element={<PaymentPage />} />
         </Routes>
       </Router>
       <Footer />

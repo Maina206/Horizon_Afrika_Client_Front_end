@@ -84,8 +84,8 @@ const SignUpClient = ({ closeModal }) => {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-container">
+    <div className="signup-modal-overlay">
+      <div className="signup-modal-container">
         <div className="modal-header">
           <h2>Sign Up</h2>
           <button className="close-button" onClick={closeModal}>
