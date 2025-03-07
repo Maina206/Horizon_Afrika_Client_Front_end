@@ -106,6 +106,44 @@
   cursor: pointer;
 }
 
+/* Logout Button */
+.logout-button {
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #e03e00;
+  transform: scale(1.05);
+}
+
+/* Dropdown Buttons (Sign In / Sign Up) */
+.dropdown-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  color: #ff4500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #ff4500;
+  color: white;
+  border-radius: 5px;
+}
+
 @media (max-width: 768px) {
   .logo {
     margin-right: 250px;

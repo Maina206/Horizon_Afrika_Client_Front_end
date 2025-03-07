@@ -82,7 +82,7 @@ const Navbar = () => {
 
       <div className={`nav-links ${isOpen ? "active" : ""}`}>
         <div className="center-links">
-          {/* Replace <a> tags with <Link> */}
+          {/* Replace <a> tags with <Link> in future for our routes */}
           <Link to="/">Home</Link>
           <Link to="/destinations">Destinations</Link>
           <Link to="/safari-packages">Safari Packages</Link>

@@ -1,7 +1,14 @@
 import React from "react";
 import "../styles/Home.css";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate(); // Initialize navigate
+
+  const handleBookNowClick = () => {
+    navigate("/safari-packages"); // Navigate to safari-packages
+  };
+
   const destinations = [
     { id: 1, name: "Mombasa", image: "src/images/Mombasa.jpeg" },
     { id: 2, name: "Flamingos", image: "src/images/Flamingos.jpg" },
@@ -38,8 +45,10 @@ const Home = () => {
       <section className="hero">
         <div className="hero-content">
           <h1>Amazing Packages Available! </h1>
-          <h2>Enjoy Some Adventure In The Wild!</h2>
-          <button className="book-now">Book Now</button>
+          <h2 className="home-h2">Enjoy Some Adventure In The Wild!</h2>
+          <button className="book-now" onClick={handleBookNowClick}>
+            Book Now
+          </button>
         </div>
       </section>
 
@@ -86,7 +95,9 @@ const Home = () => {
                 <h3>{pkg.title}</h3>
                 <p>KSH {pkg.price}</p>
                 <p>{pkg.nights}</p>
-                <button className="book-now">Book Now</button>
+                <button className="book-now" onClick={handleBookNowClick}>
+                  Book Now
+                </button>
               </div>
             </div>
           ))}
