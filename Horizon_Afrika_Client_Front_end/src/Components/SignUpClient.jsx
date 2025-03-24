@@ -15,7 +15,7 @@ const SignUpClient = ({ closeModal }) => {
 
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const API_URL = process.env.REACT_APP_API_URL;
+  // const API_URL = process.env.REACT_APP_API_URL;
 
   // Handle Input Change
   const handleChange = (e) => {
@@ -42,13 +42,16 @@ const SignUpClient = ({ closeModal }) => {
         password: formData.password,
       };
 
-      const response = await fetch(`${API_URL}/register/client`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
+      const response = await fetch(
+        `https://horizonafrika-backend.onrender.com/register/client`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
