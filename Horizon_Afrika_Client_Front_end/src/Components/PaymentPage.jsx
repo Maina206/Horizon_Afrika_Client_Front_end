@@ -74,7 +74,7 @@ const MpesaPayment = () => {
       setLoading(false);
     }
   };
-
+  // We need to handle how long a user is logged in to avoid token expiry issues
   return (
     <div className="payment-container">
       {showLogin && (
