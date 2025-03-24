@@ -1,4 +1,4 @@
-.container {
+.package-container {
   width: 100%;
   min-height: 100vh;
   background-color: #f8f9fa;
@@ -22,9 +22,9 @@
   height: fit-content;
 }
 
-.section-title {
-  font-size: 16px;
-  font-weight: 600;
+.p-4 .section-title {
+  font-size: 14px;
+  font-weight: 500;
   color: white;
   margin-bottom: 12px;
 }
@@ -59,7 +59,7 @@
   object-fit: cover;
 }
 
-.card-content {
+.safari-card-content {
   padding: 12px;
 }
 

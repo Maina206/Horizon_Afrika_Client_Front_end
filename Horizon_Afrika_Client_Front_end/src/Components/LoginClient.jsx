@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import "../styles/signupclient.css";
+import "../styles/clientlogin.css";
 
 const LoginClient = ({ closeModal, onAuthSuccess }) => {
   const [formData, setFormData] = useState({
@@ -54,10 +54,15 @@ const LoginClient = ({ closeModal, onAuthSuccess }) => {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-container">
+    <div className="login-modal-overlay">
+      <div className="login-modal-container">
         <div className="modal-header">
-          <h2>Log In</h2>
+          <h2 className="login-brand-name">Welcome Back!</h2>
+          <p className="login-welcome-message">
+            Access your dashboard and manage your account easily.
+          </p>
+          <p className="login-user-role">Log in to continue.</p>
+
           <button className="close-button" onClick={closeModal}>
             &times;
           </button>
