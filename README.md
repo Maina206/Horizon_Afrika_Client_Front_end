@@ -58,8 +58,7 @@ HORIZON_AFRIKA/
 
 ## Deployment
 
-The deployed version of the app can be accessed here:
-[Deployed URL](#) _(Replace with actual link once available)_
+The deployed version of the app can be accessed here: (https://horizonafrikaclient.netlify.app/)
 
 ## Setup Instructions
 
