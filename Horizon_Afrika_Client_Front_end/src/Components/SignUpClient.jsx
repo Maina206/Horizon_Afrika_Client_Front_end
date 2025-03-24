@@ -15,6 +15,7 @@ const SignUpClient = ({ closeModal }) => {
 
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const API_URL = process.env.REACT_APP_API_URL;
 
   // Handle Input Change
   const handleChange = (e) => {
@@ -41,7 +42,7 @@ const SignUpClient = ({ closeModal }) => {
         password: formData.password,
       };
 
-      const response = await fetch(`http://localhost:5000/register/client`, {
+      const response = await fetch(`${API_URL}/register/client`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

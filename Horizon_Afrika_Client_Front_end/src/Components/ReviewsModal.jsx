@@ -6,6 +6,9 @@ export default function ReviewsModal({ packageId, onClose }) {
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
+
+  fetch(`${API_URL}/login/client`, { method: "POST" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +19,7 @@ export default function ReviewsModal({ packageId, onClose }) {
       return;
     }
 
-    const response = await fetch("http://127.0.0.1:5000/reviews", {
+    const response = await fetch(`${API_URL}/reviews`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

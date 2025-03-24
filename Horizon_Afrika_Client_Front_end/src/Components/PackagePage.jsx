@@ -48,7 +48,7 @@ function PackagePage() {
   const [selectedLocation, setSelectedLocation] = useState("");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/packages/client")
+    fetch("https://horizonafrika-backend.onrender.com/packages/client")
       .then((response) => response.json())
       .then((data) => {
         setPackages(data);

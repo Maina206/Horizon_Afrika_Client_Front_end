@@ -15,12 +15,14 @@ const LoginClient = ({ closeModal, onAuthSuccess }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const API_URL = process.env.REACT_APP_API_URL;
+
   // Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/login/client", {
+      const response = await fetch(`${API_URL}/login/client`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
