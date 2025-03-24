@@ -11,7 +11,9 @@ export default function SafariModal({ packageData, onClose }) {
   useEffect(() => {
     if (packageData) {
       console.log("Fetching package data for ID:", packageData.id); // Debugging
-      fetch(`http://127.0.0.1:5000/packages/${packageData.id}`)
+      fetch(
+        `https://horizonafrika-backend.onrender.com/packages/${packageData.id}`
+      )
         .then((response) => response.json())
         .then((data) => {
           console.log("Fetched Safari Data:", data); // Debugging

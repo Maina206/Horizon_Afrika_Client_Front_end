@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import '../styles/AboutUs.css';
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import "../styles/AboutUs.css";
 
 const AboutUs = () => {
   return (
@@ -10,7 +10,7 @@ const AboutUs = () => {
       <section className="hero-section">
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <motion.span 
+          <motion.span
             className="pre-title"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -31,21 +31,22 @@ const AboutUs = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Experience the untamed beauty of Kenya through our curated adventures
+            Experience the untamed beauty of Kenya through our curated
+            adventures
           </motion.p>
-          <motion.div 
+          <motion.div
             className="scroll-indicator"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.8, 
+            transition={{
+              duration: 0.8,
               delay: 0.8,
               y: {
                 duration: 1.5,
                 repeat: Infinity,
                 repeatType: "reverse",
-                ease: "easeInOut"
-              }
+                ease: "easeInOut",
+              },
             }}
           >
             <span>Scroll to discover</span>
@@ -53,7 +54,7 @@ const AboutUs = () => {
           </motion.div>
         </div>
         <div className="hero-shapes">
-          <motion.div 
+          <motion.div
             className="shape shape-1"
             animate={{
               rotate: 360,
@@ -62,10 +63,10 @@ const AboutUs = () => {
             transition={{
               duration: 20,
               repeat: Infinity,
-              ease: "linear"
+              ease: "linear",
             }}
           ></motion.div>
-          <motion.div 
+          <motion.div
             className="shape shape-2"
             animate={{
               rotate: -360,
@@ -74,7 +75,7 @@ const AboutUs = () => {
             transition={{
               duration: 25,
               repeat: Infinity,
-              ease: "linear"
+              ease: "linear",
             }}
           ></motion.div>
         </div>
@@ -93,8 +94,13 @@ const AboutUs = () => {
               viewport={{ once: true }}
             >
               <h2>Adventure Travel</h2>
-              <p>Experience the thrill of exploring Kenya's most breathtaking landscapes and hidden gems with our expert guides.</p>
-              <Link to="/destinations" className="learn-more">Learn More</Link>
+              <p>
+                Experience the thrill of exploring Kenya's most breathtaking
+                landscapes and hidden gems with our expert guides.
+              </p>
+              <Link to="/destinations" className="learn-more">
+                Learn More
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -107,18 +113,27 @@ const AboutUs = () => {
             <img src="/src/images/damn.jpg" alt="Mountain view" />
             <div className="feature-content">
               <h3>Mountain Climbing</h3>
-              <p>Scale the heights of Mt. Kenya and experience stunning views from the summit.</p>
+              <p>
+                Scale the heights of Mt. Kenya and experience stunning views
+                from the summit.
+              </p>
             </div>
           </div>
           <div className="feature-text">
             <h2>We Offer The Best Adventure Travel</h2>
-            <p>Our experienced team crafts unique adventures that combine thrilling experiences with cultural immersion.</p>
+            <p>
+              Our experienced team crafts unique adventures that combine
+              thrilling experiences with cultural immersion.
+            </p>
           </div>
           <div className="feature-card">
             <img src="/src/images/Safari.jpg" alt="Safari adventure" />
             <div className="feature-content">
               <h3>Safari Adventures</h3>
-              <p>Witness the incredible wildlife in their natural habitat across Kenya's national parks.</p>
+              <p>
+                Witness the incredible wildlife in their natural habitat across
+                Kenya's national parks.
+              </p>
             </div>
           </div>
         </div>
@@ -128,7 +143,7 @@ const AboutUs = () => {
       <section className="stats-section">
         <div className="stats-overlay"></div>
         <div className="stats-grid">
-          <motion.div 
+          <motion.div
             className="stat-item"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +151,12 @@ const AboutUs = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="stat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M12 2v20M2 12h20"></path>
               </svg>
@@ -151,7 +171,7 @@ const AboutUs = () => {
             </motion.h3>
             <p>Years of Experience</p>
           </motion.div>
-          <motion.div 
+          <motion.div
             className="stat-item"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -159,7 +179,12 @@ const AboutUs = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="stat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -176,7 +201,7 @@ const AboutUs = () => {
             </motion.h3>
             <p>Happy Travelers</p>
           </motion.div>
-          <motion.div 
+          <motion.div
             className="stat-item"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -184,7 +209,12 @@ const AboutUs = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <div className="stat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
@@ -199,7 +229,7 @@ const AboutUs = () => {
             </motion.h3>
             <p>Destinations</p>
           </motion.div>
-          <motion.div 
+          <motion.div
             className="stat-item"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -207,7 +237,12 @@ const AboutUs = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <div className="stat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M12 6v6l4 2"></path>
               </svg>
@@ -230,8 +265,13 @@ const AboutUs = () => {
         <div className="gallery-grid">
           <div className="gallery-text">
             <h2>Discover Our Adventures</h2>
-            <p>From mountain peaks to coastal paradises, we offer diverse experiences for every type of adventurer.</p>
-            <Link to="/gallery" className="view-gallery">View Gallery</Link>
+            <p>
+              From mountain peaks to coastal paradises, we offer diverse
+              experiences for every type of adventurer.
+            </p>
+            <Link to="/gallery" className="view-gallery">
+              View Gallery
+            </Link>
           </div>
           <div className="gallery-images">
             <img src="/src/images/culture.jpg" alt="Adventure 1" />
@@ -245,8 +285,13 @@ const AboutUs = () => {
       <section className="contact-section">
         <div className="contact-content">
           <h2>Ready for Your Next Adventure?</h2>
-          <p>Contact us to start planning your unforgettable journey through Kenya.</p>
-          <Link to="/contact" className="contact-btn">Contact Us</Link>
+          <p>
+            Contact us to start planning your unforgettable journey through
+            Kenya.
+          </p>
+          <Link to="/contact" className="contact-btn">
+            Contact Us
+          </Link>
         </div>
       </section>
     </div>
